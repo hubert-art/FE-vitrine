@@ -48,3 +48,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const loader = document.getElementById("pageLoader");
+
+    if (!loader) {
+        return;
+    }
+
+    const hideLoader = () => {
+        loader.classList.add("is-hidden");
+
+        setTimeout(() => {
+            loader.remove();
+        }, 650);
+    };
+
+    if (document.readyState === "complete") {
+        hideLoader();
+    } else {
+        window.addEventListener("load", hideLoader, { once: true });
+    }
+});
